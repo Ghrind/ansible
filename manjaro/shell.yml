@@ -1,0 +1,21 @@
+---
+- hosts: localhost
+  tasks:
+  - name: Use a custom shell profile
+    copy:
+      src: "{{playbook_dir}}/Shell.profile"
+      dest: /home/{{ansible_user_id}}/.local/share/konsole/Shell.profile
+  - name: Install ag silversearcher
+    pacman:
+      name: the_silver_searcher
+      state: latest
+    become: true
+  - name: Install fzf
+    pacman:
+      name: fzf
+      state: latest
+    become: true
+  - name: Use .extend.bashrc
+    copy:
+      src: "{{playbook_dir}}/.extend.bashrc"
+      dest: /home/{{ansible_user_id}}/.extend.bashrc

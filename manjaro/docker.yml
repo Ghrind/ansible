@@ -1,0 +1,27 @@
+---
+- hosts: localhost
+  tasks:
+  - name: Install docker package
+    pacman:
+      name: docker
+      state: latest
+    become: true
+  - name: Install docker compose package
+    pacman:
+      name: docker-compose
+      state: latest
+    become: true
+  - name: Configure docker to run at startup
+    command: systemctl enable docker
+    become: true
+  - name: Add the docker group
+    group:
+      name: docker
+      state: present
+    become: true
+  - name: Add current user to the docker group
+    user:
+      name: norge
+      groups: docker
+      append: yes
+    become: true

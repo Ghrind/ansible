@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  tasks:
+  - name: Install Go package
+    pacman:
+      name: go
+      state: latest
+    become: true
+  - name: Create go directory
+    file:
+      path: /home/{{ansible_user_id}}/projects/go/src
+      state: directory
+  - name: Add the GOPATH environment variable
+    lineinfile:
+      dest: /home/{{ansible_user_id}}/.extend.bashrc
+      state: present
+      line: "export GOPATH=\"/home/{{ansible_user_id}}/projects/go\""

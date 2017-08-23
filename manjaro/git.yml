@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  tasks:
+  - name: Configure git email
+    command: git config --global user.email "ghrind@gmail.com"
+  - name: Configure git name
+    command: git config --global user.name "Benoît Dinocourt"
+  - name: Configure git editor
+    command: git config --global core.editor vim

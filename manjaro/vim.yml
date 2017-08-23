@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  tasks:
+  - name: Install Vim package
+    pacman:
+      name: vim
+      state: latest
+    become: true
+  - name: Install Vim Dotfiles
+    git:
+      repo: https://github.com/Ghrind/dotvim.git
+      dest: /home/{{ansible_user_id}}/.vim
+      accept_hostkey: true
+  - name: Create .vimrc Symlink
+    file:
+      src: /home/{{ansible_user_id}}/.vim/vimrc
+      dest: /home/{{ansible_user_id}}/.vimrc
+      state: link
