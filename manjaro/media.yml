@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  tasks:
+  - name: Install clementine
+    pacman:
+      name: clementine
+      state: latest
+    become: true

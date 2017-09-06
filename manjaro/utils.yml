@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  tasks:
+  - name: Install ncdu
+    pacman:
+      name: ncdu
+      state: latest
+    become: true
+  - name: Install tree
+    pacman:
+      name: tree
+      state: latest
+    become: true
+  - name: Install htop
+    pacman:
+      name: htop
+      state: latest
+    become: true

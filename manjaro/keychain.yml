@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  tasks:
+  - name: Install the Keychain package
+    pacman:
+      name: keychain
+      state: latest
+    become: true
+
+  - name: Start keychain with every console
+    command: bash-it search keychain --enable

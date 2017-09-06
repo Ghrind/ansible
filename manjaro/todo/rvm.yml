@@ -1,0 +1,12 @@
+---
+# TODO: https://etienne.depar.is/a-ecrit/post/2017/05/26/Upgrade-your-rubies-2.4-with-rvm-on-Archlinux
+- name: Install rvm
+  hosts: localhost
+  roles:
+    - { role: rvm_io.ruby,
+        tags: ruby,
+        rvm1_rubies: ['ruby-2.4.1'],
+        rvm1_user: 'norge'
+    }
+
+# TODO: install  mariadb-clients for mysql2 adapter

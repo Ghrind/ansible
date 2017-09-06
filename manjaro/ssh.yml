@@ -8,3 +8,5 @@
     shell: ssh-keygen -b 2048 -t rsa -f /home/{{ansible_user_id}}/.ssh/id_rsa -q -N "{{ssh_passphrase}}"
     args:
       creates: /home/{{ansible_user_id}}/.ssh/id_rsa
+  - name: Enable ssh completion
+    command: bash-it enable completion ssh

@@ -1,21 +1,38 @@
 ---
 - hosts: localhost
   tasks:
-  - name: Use a custom shell profile
-    copy:
-      src: "{{playbook_dir}}/Shell.profile"
-      dest: /home/{{ansible_user_id}}/.local/share/konsole/Shell.profile
+  - name: Fetch bash-it repository
+    git:
+      repo: https://github.com/Ghrind/bash-it.git
+      dest: /home/{{ansible_user_id}}/.bash-it
+      accept_hostkey: true
+  - name: Install bash-it
+    command: /home/{{ansible_user_id}}/.bash_it/install.sh --silent
+
+  - name: Configure bashit
+  # TODO
+
   - name: Install ag silversearcher
     pacman:
       name: the_silver_searcher
       state: latest
     become: true
+
   - name: Install fzf
     pacman:
       name: fzf
       state: latest
     become: true
-  - name: Use .extend.bashrc
-    copy:
-      src: "{{playbook_dir}}/.extend.bashrc"
-      dest: /home/{{ansible_user_id}}/.extend.bashrc
+  - name: Copy the fzf bash file
+    file:
+      src: resources/fzf.bash
+      dest: /home/{{ansible_user_id}}/.fzf.bash
+  - name: Enable fzf for bashit
+    command: bash-it search fzf --enable
+  - name: Install autojump
+    pacman:
+      name: autojump
+      state: latest
+    become: true
+  - name: Enable autojump for bashit
+    command: bash-it search autojump --enable

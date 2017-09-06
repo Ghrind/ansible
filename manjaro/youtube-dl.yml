@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  tasks:
+  - name: Download youtube-dl to /usr/local/bin
+    command: curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
+    become: true
+  - name: Make /usr/local/bin/youtube-dl executable
+    command: chmod a+rx /usr/local/bin/youtube-dl
+    become: true

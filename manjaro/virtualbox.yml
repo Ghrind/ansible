@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  tasks:
+  - name: Install VirtualBox package
+    pacman:
+      name: virtualbox
+      state: latest
+    become: true
+  - name: Install kernel modules
+    # Run uname -r
+    # Something like 4.9.44-1-MANJARO means you need to install the linux37-virtualbox-host-modules package
+    pacman:
+      name: linux49-virtualbox-host-modules
+      state: latest
+    become: true
+  - name: Load kernel module
+    become: true
+    command: modprobe vboxdrv

@@ -1,0 +1,14 @@
+# TODO
+#
+# pacman -S npm
+# pacman -S nodejs
+# pacman -S imagemagick
+#
+# Add these lines to /etc/hosts
+#
+# 127.0.0.1 jobteaser.dev sql-master es-master es2-master redis-master
+# 127.0.0.1 www.jobteasertest.dev
+# 127.0.0.1 embedded.jobteasertest.dev
+# 127.0.0.1 school.jobteasertest.dev
+# 127.0.0.1 em-lyon.jobteasertest.dev
+# 127.0.0.1 essec.jobteasertest.dev

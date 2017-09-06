@@ -1,9 +1,9 @@
 ---
 - hosts: localhost
   tasks:
-  - name: Install Vim package
+  - name: Install Vim package (with clipboard support)
     pacman:
-      name: vim
+      name: gvim
       state: latest
     become: true
   - name: Install Vim Dotfiles

@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  tasks:
+  - name: Symlink the data dir
+    file:
+      src: /mnt/data/{{ansible_user_id}}
+      dest: /home/{{ansible_user_id}}/data
+      state: link
+      owner: "{{ansible_user_id}}"
+      group: "{{ansible_user_id}}"
