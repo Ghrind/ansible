@@ -8,4 +8,4 @@
     become: true
 
   - name: Start keychain with every console
-    command: bash-it search keychain --enable
+    shell: bash_it search keychain --enable

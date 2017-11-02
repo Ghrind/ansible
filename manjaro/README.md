@@ -44,10 +44,15 @@ Other playbooks
 
 ## Not automated
 
-* Change the console look & feel (scrollback)
 * Change dolphin options
 * Copy the .firefox directory (or signup to Sync)
 * Copy the .config/Clementine directory
+
+### Change Konsole & Yakuake
+
+General > Command : /bin/bash -l
+Appearance > Color Scheme > Solarized
+Scrolling > Scrollback > Unlimited Scrollback
 
 ## TODO
 

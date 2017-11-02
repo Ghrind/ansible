@@ -7,10 +7,10 @@
       dest: /home/{{ansible_user_id}}/.bash-it
       accept_hostkey: true
   - name: Install bash-it
-    command: /home/{{ansible_user_id}}/.bash_it/install.sh --silent
+    command: /home/{{ansible_user_id}}/.bash-it/install.sh --silent
 
   - name: Configure bashit
-  # TODO
+    command: bash-it disable aliases general && bash-it enable aliases grinder
 
   - name: Install ag silversearcher
     pacman:
@@ -24,8 +24,8 @@
       state: latest
     become: true
   - name: Copy the fzf bash file
-    file:
-      src: resources/fzf.bash
+    copy:
+      src: "{{playbook_dir}}/resources/.fzf.bash"
       dest: /home/{{ansible_user_id}}/.fzf.bash
   - name: Enable fzf for bashit
     command: bash-it search fzf --enable
